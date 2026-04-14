@@ -17,3 +17,8 @@ jobs:
         uname -a
         df -h
         free -m
+
+    - name: Run system check
+      run: |
+        chmod +x scripts/system_check.sh
+        ./scripts/system_check.sh
