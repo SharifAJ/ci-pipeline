@@ -1,4 +1,4 @@
-name: DevOps CI Pipeline
+name: Docker CI Pipeline
 
 on:
   push:
@@ -9,16 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - name: Run system commands
+    - name: Build Docker image
       run: |
-        echo "Starting CI"
-        uname -a
-        df -h
-        free -m
-
-    - name: Run system check
-      run: |
-        chmod +x scripts/system_check.sh
-        ./scripts/system_check.sh
+        docker build -t my-nginx .
